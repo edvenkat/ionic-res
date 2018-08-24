@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>Collection</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>    
+	<ion-card *ngFor="let collection of restaurantsCollection" (click)="showResDetails(collection.collection.collection_id)">
+		<img src="{{collection.collection.image_url}}"/>
+		<ion-card-content>
+			<ion-card-title>
+				{{collection.collection.title}}
+			</ion-card-title>
+			<p>
+				{{collection.collection.description}}
+			</p>
+		</ion-card-content>
+		<ion-row no-padding>
+			<ion-col text-right>
+				<button ion-button clear small color="danger" icon-start>
+				<!-- <ion-icon name='restaurant'></ion-icon> --> {{collection.collection.res_count}} Restaurant 
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,22 @@
+<!--
+<ion-item>  
+  <p>
+   <img [src]="reviewDetails?.review.user.profile_image">
+    {{reviewDetails?.review.user.name}}
+  </p>  
+  <p>
+    <ion-icon name="star" *ngFor="let star of restaurantService.getArray(reviewDetails?.review.rating)"></ion-icon>
+  </p>
+  <p>{{reviewDetails?.review.review_text}}</p>  
+</ion-item>
+-->
+<ion-list>
+    <ion-item>
+        <ion-avatar item-start>
+            <img [src]="reviewDetails?.review.user.profile_image">
+        </ion-avatar>
+        <h2>{{reviewDetails?.review.user.name}}</h2>
+        <p><ion-icon name="star" *ngFor="let star of restaurantService.getArray(reviewDetails?.review.rating)"></ion-icon></p>
+        <p text-wrap>{{reviewDetails?.review.review_text}}</p>
+    </ion-item>
+</ion-list>

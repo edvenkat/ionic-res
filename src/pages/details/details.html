@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>{{restaurant.shortname}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div class="info">
+		<h2>{{restaurant.restaurant.name}}</h2>
+		<p>
+			<ion-icon name="star" *ngFor="let star of stars; let i=index" [ngClass]="{'active': isActive(i)}"></ion-icon>
+			{{restaurant.restaurant.user_rating.votes}} Reviews
+		</p>
+		<p *ngIf="restaurant.restaurant.has_table_booking==1" class="" text-right>
+			<button ion-button round icon-right (tap)="visitBookURL(restaurant.restaurant.book_url)">BOOK NOW</button>
+		</p>
+		<p>{{restaurant.restaurant.location.address}}, {{restaurant.restaurant.location.city}}</p>  	<!--(tap)="window.open(restuarant.restaurant.book_form_web_view_url)" -->
+		<!-- <p>{{restaurant.categories}}</p> -->
+	</div>
+	<div class="photos">
+		<h3>Pictures</h3>
+		<ion-scroll scrollX="true">
+			<img [src]="photo.thumbnail" *ngFor="let photo of restaurantPhotos; let i=index" tappable (click)="showImage(restaurant.restaurant.name, restaurantPhotos, i)"> <!--  -->
+		</ion-scroll>
+	</div>
+	<div class="info" *ngIf="restaurant.restaurant.location.latitude!='' && restaurant.restaurant.location.longitude!=''">
+		<h3>Location</h3>
+		<ion-card style="position: relative">
+			<img (tap)="googleMap(restaurant.restaurant.name,restaurant.restaurant.location.latitude,restaurant.restaurant.location.longitude)" src="https://maps.googleapis.com/maps/api/staticmap?center={{restaurant.restaurant.location.latitude}},{{restaurant.restaurant.location.longitude}}&zoom=16&scale=1&size=300x300&markers=color:blue%7Clabel:A%7C{{restaurant.restaurant.location.latitude}},{{restaurant.restaurant.location.longitude}}&key=AIzaSyDuM2ngtpt0IeU3ULdz6THf1oacaso5u30" alt="Google Map">
+			<ion-fab right top>
+				<button ion-fab>
+					<ion-icon name="pin"></ion-icon>
+				</button>
+			</ion-fab>
+			<ion-item>
+				<ion-icon name="restaurant" item-start large></ion-icon>
+				<p>{{restaurant.restaurant.location.address}}</p>
+			</ion-item>
+		</ion-card>
+	</div>
+	<div class="reviews">
+		<h3>Reviews</h3>
+		<p *ngIf="restaurantReview.length==0">No reviews yet =(</p>
+		<div *ngIf="restaurantReview.length>0">
+			<review *ngFor="let review of restaurantReview" [reviewDetails]="review"></review>
+		</div>
+	</div>
+</ion-content>

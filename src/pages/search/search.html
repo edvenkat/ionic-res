@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>Search</ion-title>
+	</ion-navbar>
+	<ion-searchbar [(ngModel)]="searchTerm" (search)="getRestaurants()"></ion-searchbar>
+</ion-header>
+<ion-content>    
+	<!-- <ion-refresher (ionRefresh)="getRestaurants($event)">    
+		<ion-refresher-content
+			pullingIcon="arrow-dropdown"
+			pullingText="Pull to refresh"
+			refreshingText="Refreshing..."
+		>      
+		</ion-refresher-content>
+	</ion-refresher> -->
+	<ion-list>
+		<ion-item *ngFor="let restaurant of restaurants" (tap)="showDetails(restaurant)" text-wrap detail-none>
+			<ion-grid>
+				<ion-row>
+					<ion-col width-25>
+						<img [src]="restaurant.restaurant.thumb">
+					</ion-col>
+					<ion-col>
+						<h2>{{restaurant.restaurant.name}}</h2>
+						<p>
+							<ion-icon name="star" *ngFor="let star of restaurantService.getArray(restaurant.restaurant.user_rating.aggregate_rating)"></ion-icon>
+							{{restaurant.restaurant.user_rating.votes}} Reviews
+						</p>
+						<p><strong>Avg Cost for Two </strong><br> {{restaurant.restaurant.currency}} {{restaurant.restaurant.average_cost_for_two}}</p>
+						<!-- <p>{{restaurant.restaurant.location.address}}</p> -->
+						<!-- <p>{{restaurant.restaurant.location.city}}</p> -->
+					</ion-col>
+					<ion-col width-20 text-right>
+						<!-- <p>{{restaurant.restaurant.currency}} {{restaurant.restaurant.average_cost_for_two}} per 2</p> -->
+					</ion-col>
+				</ion-row>
+			</ion-grid>      
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="getRestaurants($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

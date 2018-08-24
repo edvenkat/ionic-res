@@ -1,0 +1,20 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>City Search</ion-title>
+    </ion-navbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (keyup)="getRestaurantsCity()"></ion-searchbar>
+</ion-header>
+<ion-content padding>  
+    <ion-list radio-group *ngIf="city.length>0">
+        <ion-list-header>
+            City List
+        </ion-list-header>
+        <ion-item *ngFor="let city of city" >
+            <ion-avatar item-start>
+                <img src="{{city.country_flag_url}}">
+            </ion-avatar>
+            <ion-label>{{city.name}}</ion-label>
+            <ion-radio value="{{city.id}}" (ionSelect)="citySelected(city.id)"></ion-radio>
+        </ion-item>
+    </ion-list>
+</ion-content>

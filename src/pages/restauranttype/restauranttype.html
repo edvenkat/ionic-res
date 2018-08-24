@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>Collection</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>  <!-- class="card-background-page" -->
+    <!--<ion-card *ngFor="let establishments of restaurantsType" (click)="showResDetails(establishments.establishment.id)">
+		<img src="assets/imgs/card-saopaolo.png"/>
+		<div class="card-title">{{establishments.establishment.name}}</div>
+		<div class="card-subtitle">41 Listings</div>
+	</ion-card> -->
+    <ion-list inset *ngFor="let establishments of restaurantsType" (click)="showResDetails(establishments.establishment.id)">
+        <!-- <button> -->
+		{{establishments.establishment.name}}
+        <!-- </button> -->
+    </ion-list>
+    <!--
+	<ion-card *ngFor="let establishments of restaurantsType" (click)="showResDetails(establishments.establishment.id)">
+    <img src="{{establishments.establishment.image_url}}"/>
+    <ion-card-content>
+        <ion-card-title>
+            {{establishments.establishment.name}}
+        </ion-card-title>
+        <p>
+            {{establishments.establishment.description}}
+        </p>
+    </ion-card-content>
+      <ion-row no-padding>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+        
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+-->
+</ion-content>

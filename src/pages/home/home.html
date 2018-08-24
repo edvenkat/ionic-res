@@ -1,0 +1,121 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-slides pager style="height:250px" autoplay="3000" loop	> 
+        <ion-slide>
+            <img class="image" src="assets/imgs/banner_04.jpg">
+        </ion-slide>    
+        <ion-slide>
+            <img class="image" src="assets/imgs/banner_04.jpg">
+        </ion-slide>    
+        <ion-slide>
+            <img class="image" src="assets/imgs/banner_04.jpg">
+        </ion-slide>    
+    </ion-slides> 
+    
+    <ion-card>
+        <ion-card-header style="color:#427feb">
+           Search Your Restaurants Now
+        </ion-card-header>
+
+      <ion-list>
+        <button ion-item (tap)="resSearch('restype')">
+          <ion-icon name="restaurant" item-start></ion-icon>
+          By Restaurants Type
+        </button>
+
+        <button ion-item (tap)="resSearch('nearby')">
+          <ion-icon name="locate" item-start></ion-icon>
+          Near By
+        </button>
+
+        <button ion-item (tap)="resSearch('collection')">
+          <ion-icon name="cafe" item-start></ion-icon>
+          Collection
+        </button>
+
+        <button ion-item>
+          <ion-icon name="search" item-start></ion-icon>
+          General Search
+        </button>
+          
+        <button ion-item (tap)="showCityModal()">
+          <ion-icon name="compass" item-start></ion-icon>
+          Change City
+        </button>
+
+      </ion-list>
+    </ion-card>
+    
+    <!--
+    <ion-card>
+        <img src="assets/imgs/bjork-live.jpg"/>
+        <ion-card-content>
+            <ion-card-title>
+                Search By Restuartant Type
+            </ion-card-title>
+            <p>
+                Get a list of restaurant types in a city. List of all restaurants categorized under a particular restaurant type can obtained using /Search API with Establishment ID and location details as inputs
+            </p>
+        </ion-card-content>
+        <ion-item>
+            <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+                Albums
+            <ion-badge item-end>9</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
+            Followers
+        <ion-badge item-end>260k</ion-badge>
+        </ion-item>
+    </ion-card>
+    
+    <ion-card>
+        <img src="assets/imgs/bjork-live.jpg"/>
+        <ion-card-content>
+            <ion-card-title>
+                Near By
+            </ion-card-title>
+            <p>
+                Get Foodie and Nightlife Index, list of popular cuisines and nearby restaurants around the given coordinates
+            </p>
+        </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+        <img src="assets/imgs/bjork-live.jpg"/>
+        <ion-card-content>
+            <ion-card-title>
+                Collection
+            </ion-card-title>
+            <p>
+                Returns Zomato Restaurant Collections in a City. List of all restaurants listed in any particular Zomato Collection can be obtained using the '/search' API with Collection ID and Zomato City ID as the input
+            </p>
+        </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+        <img src="assets/imgs/bjork-live.jpg"/>
+        <ion-card-content>
+            <ion-card-title>
+                General Search
+            </ion-card-title>
+            <p>
+                The location input can be specified using Zomato location ID or coordinates. Cuisine / Establishment / Collection IDs can be obtained from respective api calls. Get up to 100 restaurants by changing the 'start' and 'count' parameters with the maximum value of count being 20. Partner Access is required to access photos and reviews.
+            </p>
+        </ion-card-content>
+    </ion-card>
+	-->
+    
+</ion-content>
+<!--
+<ion-tabs id="tabs">
+  <ion-tab [root]="nearbyRoot" tabTitle="nearby" tabIcon="compass"></ion-tab>
+  <ion-tab [root]="searchRoot" tabTitle="search" tabIcon="search"></ion-tab>  
+</ion-tabs>
+-->

@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-navbar color="ionic">
+		<ion-title>Near By</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<!-- <ion-card *ngFor="let restaurant of restaurants" (tap)="showDetails(restaurant)">
+		<img [src]="restaurant.photos[0].original">
+		<ion-card-content>        
+			<ion-card-title>
+				{{restaurant.name}}
+			</ion-card-title>
+			<p>
+				<ion-icon name="star" *ngFor="let star of restaurantService.getArray(restaurant.rating)"></ion-icon>
+				{{restaurant.reviewCount}} Reviews
+			</p>
+		</ion-card-content>
+	</ion-card>  -->
+    <ion-card *ngFor="let restaurant of restaurants" (tap)="showDetails(restaurant)">
+		<img [src]="restaurant.restaurant.featured_image" imgSrc="restaurant.restaurant.featured_image" defaultImg="assets/imgs/coming-soon-png.png">
+		<ion-card-content>        
+			<ion-card-title>
+				{{restaurant.restaurant.name}}
+			</ion-card-title>
+			<p>
+				<ion-icon name="star" *ngFor="let star of restaurantService.getArray(restaurant.restaurant.user_rating.aggregate_rating)"></ion-icon>
+				{{restaurant.restaurant.user_rating.votes}} Reviews
+			</p>
+		</ion-card-content>
+	</ion-card>  
+</ion-content>
