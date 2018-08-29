@@ -1,0 +1,50 @@
+import { Component } from '@angular/core';
+import {  NavController, NavParams, Platform } from 'ionic-angular';
+import { AdMobPro } from '@ionic-native/admob-pro';
+
+/**
+ * Generated class for the DetailsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+
+@Component({
+  selector: 'page-details',
+  templateUrl: 'details.html',
+})
+export class DetailsPage {
+    showInterstitialAd() {
+        if (AdMobPro) {
+            this.admob.showInterstitial();
+       }
+    }
+  constructor(public navCtrl: NavController, public navParams: NavParams,private admob: AdMobPro,public platform: Platform) {
+     platform.ready().then(() => {
+            var admobid = {
+                banner: 'ca-app-pub-3940256099942544/6300978111',
+                interstitial: 'ca-app-pub-3940256099942544/1033173712'
+            };
+
+            this.admob.createBanner({
+                adId: admobid.banner,
+                isTesting: true,
+                autoShow: true,
+                position: this.admob.AD_POSITION.BOTTOM_CENTER
+            })
+
+            this.admob.prepareInterstitial({
+                adId: admobid.interstitial,
+                isTesting: true,
+                autoShow: true
+            })
+             this.showInterstitialAd();
+         });
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DetailsPage');
+  }
+
+}
